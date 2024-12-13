@@ -1,4 +1,9 @@
-import { capitalize, reverseString, caesarCipher } from "./methods.js";
+import {
+  capitalize,
+  reverseString,
+  caesarCipher,
+  calculator,
+} from "./methods.js";
 
 describe("'capitalize' function works as expected", () => {
   test("capitalizes a simple word", () => {
@@ -50,5 +55,39 @@ describe("'caesarCipher' function works as expected", () => {
   });
   test("works for mixed Small and Capital letters with consisting of some non alphabetic characters", () => {
     expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
+});
+
+describe("Calculator object works correctly", () => {
+  test("add method correctly adds two numbers", () => {
+    expect(calculator.add(2, 3)).toBe(5);
+    expect(calculator.add(-1, 1)).toBe(0);
+    expect(calculator.add(0, 0)).toBe(0);
+    expect(calculator.add(2.5, 3.5)).toBe(6);
+  });
+
+  test("subtract method correctly subtracts two numbers", () => {
+    expect(calculator.subtract(5, 3)).toBe(2);
+    expect(calculator.subtract(2, 7)).toBe(-5);
+    expect(calculator.subtract(0, 0)).toBe(0);
+    expect(calculator.subtract(10.5, 3.5)).toBe(7);
+  });
+
+  test("multiply method correctly multiplies two numbers", () => {
+    expect(calculator.multiply(2, 3)).toBe(6);
+    expect(calculator.multiply(-1, 4)).toBe(-4);
+    expect(calculator.multiply(0, 5)).toBe(0);
+    expect(calculator.multiply(1.5, 2)).toBe(3);
+  });
+
+  test("divide method correctly divides two numbers", () => {
+    expect(calculator.divide(6, 2)).toBe(3);
+    expect(calculator.divide(7, -1)).toBe(-7);
+    expect(calculator.divide(0, 5)).toBe(0);
+    expect(calculator.divide(5, 2)).toBe(2.5);
+  });
+
+  test("divide methods throws error when divided by zero", () => {
+    expect(() => calculator.divide(5, 0)).toThrow("Cannot divide by zero");
   });
 });
