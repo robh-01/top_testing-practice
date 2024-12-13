@@ -3,6 +3,7 @@ import {
   reverseString,
   caesarCipher,
   calculator,
+  analyzeArray
 } from "./methods.js";
 
 describe("'capitalize' function works as expected", () => {
@@ -89,5 +90,63 @@ describe("Calculator object works correctly", () => {
 
   test("divide methods throws error when divided by zero", () => {
     expect(() => calculator.divide(5, 0)).toThrow("Cannot divide by zero");
+  });
+});
+
+describe("'analyzeArray' function works as expected", () => {
+  test("should return correct object for a valid array", () => {
+    const result = analyzeArray([1, 8, 3, 4, 2, 6]);
+    expect(result).toEqual({
+      average: 4,
+      min: 1,
+      max: 8,
+      length: 6,
+    });
+  });
+
+  test("should return correct values for an array with one number", () => {
+    const result = analyzeArray([5]);
+    expect(result).toEqual({
+      average: 5,
+      min: 5,
+      max: 5,
+      length: 1,
+    });
+  });
+
+  test("should handle an array with all identical numbers", () => {
+    const result = analyzeArray([3, 3, 3, 3]);
+    expect(result).toEqual({
+      average: 3,
+      min: 3,
+      max: 3,
+      length: 4,
+    });
+  });
+
+  test("should throw an error if input is not an array", () => {
+    expect(() => analyzeArray("not an array")).toThrow(
+      "Input must be an array of numbers"
+    );
+  });
+
+  test("should throw an error if array contains non-number elements", () => {
+    expect(() => analyzeArray([1, 2, "three"])).toThrow(
+      "Input must be an array of numbers"
+    );
+  });
+
+  test("should handle an empty array gracefully", () => {
+    expect(() => analyzeArray([])).toThrow("Input must be an array of numbers");
+  });
+
+  test("should handle negative numbers correctly", () => {
+    const result = analyzeArray([-1, -8, -3, -4, -2, -6]);
+    expect(result).toEqual({
+      average: -4,
+      min: -8,
+      max: -1,
+      length: 6,
+    });
   });
 });

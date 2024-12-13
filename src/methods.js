@@ -28,7 +28,6 @@ function isCapitalAlphabet(characterCode) {
 }
 
 function shiftCharacterCode(characterCode, shiftFactor) {
-  
   // shift the code of small letters by shiftFactor
   if (isSmallAlphabet(characterCode)) {
     let shiftedCode = characterCode + shiftFactor;
@@ -86,9 +85,52 @@ const calculator = (function () {
     }
     return a / b;
   };
-  
+
   return { add, subtract, multiply, divide };
 })();
 
-export { capitalize, reverseString, caesarCipher, calculator };
+function containsOnlyNumber(arr) {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (typeof arr[i] !== "number") {
+      return false;
+    }
+  }
+  return true;
+}
 
+function findAverage(arr) {
+  let average =
+    arr.reduce((total, number) => {
+      return total + number;
+    }, 0) / arr.length;
+  return average;
+}
+
+function findMinimumValue(arr) {
+  let minimum = arr[0];
+  for (let i = 1; i <= arr.length - 1; i++) {
+    minimum = arr[i] < minimum ? arr[i] : minimum;
+  }
+  return minimum;
+}
+
+function findMaximumValue(arr) {
+  let maximum = arr[0];
+  for (let i = 1; i <= arr.length - 1; i++) {
+    maximum = arr[i] > maximum ? arr[i] : maximum;
+  }
+  return maximum;
+}
+
+function analyzeArray(arr) {
+  if (!Array.isArray(arr) || !containsOnlyNumber(arr) || arr.length == 0) {
+    throw new Error("Input must be an array of numbers");
+  }
+  return {
+    average: findAverage(arr),
+    min: findMinimumValue(arr),
+    max: findMaximumValue(arr),
+    length: arr.length,
+  };
+}
+export { capitalize, reverseString, caesarCipher, calculator, analyzeArray };
