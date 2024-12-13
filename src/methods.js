@@ -7,4 +7,16 @@ function capitalize(str) {
   }
 }
 
-export { capitalize };
+function reverseString(str) {
+  const arrayOfCharacters = [];
+  for (let i = str.length - 1; i >= 0; i--) {
+    arrayOfCharacters.push(str.charAt(i));
+  }
+  let reversedString = arrayOfCharacters.reduce(
+    (revStr, char) => revStr + char,
+    ""
+  );
+    return reversedString;
+}
+
+export { capitalize, reverseString };
