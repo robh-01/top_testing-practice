@@ -1,6 +1,6 @@
-import { capitalize, reverseString } from "./methods.js";
+import { capitalize, reverseString, caesarCipher } from "./methods.js";
 
-describe("'capitalize' function works", () => {
+describe("'capitalize' function works as expected", () => {
   test("capitalizes a simple word", () => {
     expect(capitalize("hello")).toBe("Hello");
   });
@@ -15,8 +15,7 @@ describe("'capitalize' function works", () => {
   });
 });
 
-
-describe("'reverseString' function works", () => {
+describe("'reverseString' function works as expected", () => {
   test("reverses a simple word", () => {
     expect(reverseString("hello")).toBe("olleh");
   });
@@ -37,5 +36,19 @@ describe("'reverseString' function works", () => {
   });
   test("reverses a string with spaces", () => {
     expect(reverseString(" spaces ")).toBe(" secaps ");
+  });
+});
+
+describe("'caesarCipher' function works as expected", () => {
+  test("works for a lowercase letters", () => {
+    expect(caesarCipher("don", 3)).toBe("grq");
+    expect(caesarCipher("xyz", 3)).toBe("abc");
+  });
+  test("works for a capital letters", () => {
+    expect(caesarCipher("DON", 3)).toBe("GRQ");
+    expect(caesarCipher("XYZ", 3)).toBe("ABC");
+  });
+  test("works for mixed Small and Capital letters with consisting of some non alphabetic characters", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
   });
 });
