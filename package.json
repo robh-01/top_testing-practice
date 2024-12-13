@@ -1,0 +1,27 @@
+{
+  "name": "top_testing-practice",
+  "version": "1.0.0",
+  "description": "This is a repository for Practicing Testing",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robh-01/top_testing-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robh-01/top_testing-practice/issues"
+  },
+  "homepage": "https://github.com/robh-01/top_testing-practice#readme",
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}
